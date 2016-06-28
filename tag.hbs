@@ -1,0 +1,58 @@
+{{!< default}}
+{{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
+
+{{! This bellow code is for loading header aria}}
+{{> "header"}}
+
+        <!-- Content
+        ================================================== -->
+        <div id="content" class="site-content">
+
+            <div class="container">
+                <div class="archive-page-title">
+                    <div class="row">
+                        <div class="col-md-12">                          
+                            <div class="title-content">
+                                <h1><span>Browsing Tag </span> {{tag.name}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /.archive-page-title -->
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <!-- Content Area -->
+                        <div id="primary" class="content-area">
+                            <main id="main" class="site-main">
+                                <div class="row">
+                                    <div class="col-md-12 ">
+                                        <script>
+                                              $(document).ready(function () {
+                                                 if ( Post_Layout == "grid") { 
+                                                     $(".main-index").attr("id","masonry-layout");
+                                                 }
+                                             });
+                                         </script>
+                                         <div class="main-index row">
+                                            {{! The code below includes the post loop - partials/loop-main.hbs }}
+                                            {{#foreach posts}}
+                                                    {{> "loop"}} 
+                                            {{/foreach}}
+                                        </div>       
+                                    </div> <!-- /.col-md-12 -->
+
+                                    <div class="col-md-12 col-sm-12 full-width">
+
+                                    </div>
+                                </div> <!-- /.row -->
+                            </main> <!-- #main -->
+
+                            <!-- pagination -->
+                           {{pagination}}
+                        </div> <!-- #primary -->
+                    </div> <!-- /.col-md-8 -->
+                    {{> "sidebar"}}
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+            
+        </div><!-- #content -->
